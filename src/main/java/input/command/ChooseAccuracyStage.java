@@ -4,6 +4,7 @@ import computations.InputData;
 import input.InterruptCommandException;
 import input.ReturnCommandException;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ChooseAccuracyStage implements Stage {
@@ -20,13 +21,16 @@ public class ChooseAccuracyStage implements Stage {
 
             answer = answer.replace(',', '.');
             try {
-                double accuracy = Double.parseDouble(answer);
-                if (answer.trim().length() - (answer.contains(".") ? 1 : 0) > 15) {
-                    System.out.println("Вы ввели для точности больше 15 знаков. Это может сказаться на точности, пожалуйста, введите значение точности с меньшим числом знаков.");
+                BigDecimal accuracy = new BigDecimal(answer);
+                if (answer.contains(".") && answer.trim().split("\\.")[1].length() > 8) {
+                    System.out.println("Вы ввели для точности больше 8 знаков после запятой. Это может сказаться на длительности вычислений, пожалуйста, введите значение точности с меньшим числом знаков после запятой.");
                     continue;
-                } else if (accuracy <= 0) {
+                } else if (accuracy.compareTo(BigDecimal.ZERO) <= 0) {
                     System.out.println("Введенная точность меньше или равна 0. Пожалуйста, введите точность, которая будет больше 0.");
                     continue;
+                }
+                if (answer.contains(".")) {
+                    accuracy.setScale(answer.trim().split("\\.")[1].length());
                 }
                 data.setAccuracy(accuracy);
                 passed = true;

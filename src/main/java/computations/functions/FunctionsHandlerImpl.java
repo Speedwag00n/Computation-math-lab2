@@ -12,6 +12,8 @@ public class FunctionsHandlerImpl implements FunctionsHandler {
         functions.add(new PolynomialFunction());
         functions.add(new NaturalLogarithmFunction());
         functions.add(new XRootFunction());
+        functions.add(new SinusFunction());
+        functions.add(new XDivisionFunction());
     }
 
     public List<FunctionContainer> getFunctions() {

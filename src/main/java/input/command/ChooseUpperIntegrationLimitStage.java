@@ -4,6 +4,7 @@ import computations.InputData;
 import input.InterruptCommandException;
 import input.ReturnCommandException;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ChooseUpperIntegrationLimitStage implements Stage {
@@ -20,12 +21,12 @@ public class ChooseUpperIntegrationLimitStage implements Stage {
 
             answer = answer.replace(',', '.');
             try {
-                double upperLimit = Double.parseDouble(answer);
-                if (answer.trim().length() - (answer.contains(".") ? 1 : 0) > 12) {
-                    System.out.println("Вы ввели значение нижнего предела больше 12 знаков. Это может сказаться на точности, пожалуйста, введите нижний предел с меньшим числом знаков.");
+                BigDecimal upperLimit = new BigDecimal(answer);
+                if (answer.contains(".") && answer.trim().split("\\.")[1].length() > 12) {
+                    System.out.println("Вы ввели значение верхнего предела больше 12 знаков после запятой. Это может сказаться на точности, пожалуйста, введите верхний предел с меньшим числом знаков после запятой.");
                     continue;
                 }
-                data.setUpperIntegrationLimit(upperLimit);
+                data.setUpperLimit(upperLimit);
                 passed = true;
             } catch (NumberFormatException e) {
                 System.out.println("Вы ввели неизвестный ответ. Введите в качестве ответа одну десятичную дробь.");

@@ -3,19 +3,19 @@ package computations.functions;
 import java.math.BigDecimal;
 import java.util.function.Function;
 
-public class NaturalLogarithmFunction extends FunctionContainer {
+public class XDivisionFunction extends FunctionContainer {
 
-    public NaturalLogarithmFunction() {
-        super("ln(x)");
+    public XDivisionFunction() {
+        super("4/x");
     }
 
     @Override
     public Function<BigDecimal, BigDecimal> getFunction() {
         return x -> {
-            if (x.compareTo(BigDecimal.ONE) <= 0) {
+            if (x.compareTo(BigDecimal.ZERO) == 0) {
                 throw new NotAllowableRangeException();
             }
-            return BigDecimal.valueOf(Math.log(x.doubleValue()));
+            return BigDecimal.valueOf(4/x.doubleValue());
         };
     }
 
