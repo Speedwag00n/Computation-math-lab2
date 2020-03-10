@@ -1,17 +1,15 @@
 import computations.InputData;
 import computations.IntegrationResult;
 import computations.RectangleMethodCalculator;
-import computations.RectangleMethodType;
 import computations.functions.FunctionsHandlerImpl;
 import computations.functions.NotAllowableRangeException;
 import input.InterruptCommandException;
 import input.ReturnCommandException;
-import input.command.*;
+import input.stages.*;
 import output.ResultsPrinter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class Main {
@@ -19,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         boolean working = true;
         System.out.println(
-                "Добро пожаловать в приложение для вычесления интегралов методом прямоугольников!\n" +
+                "Добро пожаловать в приложение для вычесления определенных интегралов методом прямоугольников!\n" +
                         "Если вы захотите вернуться на предыдущий шаг, введите \"return\" или \"вернуться\".\n" +
                         "Если вы захотите начать ввод данных с нуля, введите \"cancel\" или \"отменить\".\n" +
                         "Если вы захотите выйти из приложения, то введите \"exit\" или \"выйти\"."

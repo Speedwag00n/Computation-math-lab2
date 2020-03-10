@@ -1,4 +1,4 @@
-package input.command;
+package input.stages;
 
 import computations.InputData;
 import input.ReturnCommandException;
